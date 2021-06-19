@@ -22,6 +22,7 @@ for customer in customers:
         else:
             left = mid 
              
+    # 本店からが宅配先までの可能性がある場合を別に調べる。
     if left == -1:
         ans += min(abs(stores[right]-customer),customer)
     elif right == n-1:
