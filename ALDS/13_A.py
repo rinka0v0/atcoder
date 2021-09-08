@@ -27,3 +27,30 @@ for i in all:
 for i in range(8):
     print('.'*ans[i] + 'Q' + '.'*(7-ans[i]))
 
+
+# 2回目
+import itertools
+k = int(input())
+piece = [list(map(int,input().split())) for i in range(k) ]
+
+ls = list(itertools.permutations(range(8)))
+ans = ['.'*8 for i in range(8)]
+
+for i in range(len(ls)):
+    ok = True
+    for j in range(8):
+        for k in range(j+1,8):
+            if abs(k - j) == abs(ls[i][k] - ls[i][j]):
+                ok = False
+    if ok:
+        for j in piece:
+            judge = True
+            for k in range(8):
+                if [k,ls[i][k]] == j:
+                    judge = False
+            if judge:
+                ok = False
+    if ok:
+        for j in range(8):
+            print('.'*ls[i][j] + 'Q' + '.'*(7-ls[i][j]))
+        break
