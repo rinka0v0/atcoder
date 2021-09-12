@@ -1,15 +1,13 @@
-N,W = map(int,input().split())
-ls = [[0,0] for i in range(N+10)]
-for i in range(N):
-    ls[i] = list(map(int,input().split()))
+n,w = map(int,input().split())
+ls = [list(map(int,input().split())) for i in range(n)]
 
-dp = [[0]*(W+10) for i in range(N+10)]
+dp = [[0]*(w+10) for i in range(n+1)]
 
-for i in range(N+1):
-    for w in range(W+1):
-        if w >= ls[i][1]:
-            dp[i+1][w] = max(dp[i][w],dp[i][w-ls[i][1]] + ls[i][0])
+for i in range(n):
+    for j in range(w+1):
+        if ls[i][1] <= j:
+            dp[i+1][j] = max(dp[i][j],dp[i+1][j-ls[i][1]] + ls[i][0])
         else:
-            dp[i+1][w] = dp[i][w]
+            dp[i+1][j] = dp[i][j]
 
-print(dp[N][w])
+print(dp[n][w])
