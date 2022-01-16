@@ -1,5 +1,6 @@
 # B  How Many Islands?
 
+# 再帰回数の上限を変更しないとエラーになる
 import sys
 sys.setrecursionlimit(10000)
 
